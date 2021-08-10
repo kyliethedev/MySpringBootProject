@@ -1,10 +1,13 @@
 package com.kyliethedev.MyProject.web;
 
 import com.kyliethedev.MyProject.service.PostsService;
+import com.kyliethedev.MyProject.web.dto.PostsResponseDto;
 import lombok.RequiredArgsConstructor;
+import org.dom4j.rule.Mode;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @RequiredArgsConstructor
 @Controller
@@ -17,6 +20,14 @@ public class IndexController {
 
         model.addAttribute("posts", postsService.findAllDesc());
         return "index";
+    }
+
+    @GetMapping("/posts/update/{id}")
+    public String postsUpdate(@PathVariable Long id, Model model) {
+        PostsResponseDto responseDto = postsService.findById(id);
+        model.addAttribute("post", responseDto);
+
+        return "posts-update";
     }
 
     @GetMapping("/posts/save")
