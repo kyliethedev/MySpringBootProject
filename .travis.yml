@@ -17,7 +17,7 @@ script: "./gradlew clean build --stacktrace"
 before_deploy:
   - zip -r myspringbootproject *
   - mkdir -p deploy
-  - mv myspringbootproejct.zip deploy/myspringbootproject.zip
+  - mv myspringbootproject.zip deploy/myspringbootproject.zip
 
 deploy:
   - provider: s3
