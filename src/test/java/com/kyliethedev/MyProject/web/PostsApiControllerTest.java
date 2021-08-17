@@ -68,7 +68,7 @@ public class PostsApiControllerTest {
 
     @Test
     @WithMockUser(roles="USER")
-    public void Posts_등록된다() throws Exception {
+    public void SavePosts() throws Exception {
         //given
         String title = "title";
         String content = "content";
@@ -96,7 +96,7 @@ public class PostsApiControllerTest {
 
     @Test
     @WithMockUser(roles = "USER")
-    public void Posts_수정된다() throws Exception {
+    public void UpdatePosts() throws Exception {
         //given
         Posts savedPosts = postsRepository.save(Posts.builder()
                         .title("title")
@@ -130,7 +130,7 @@ public class PostsApiControllerTest {
     }
 
     @Test
-    public void BaseTimeEntity_등록() {
+    public void SaveBaseTimeEntity() {
         //given
         LocalDateTime now = LocalDateTime.of(2021,8,17,0,0,0);
         postsRepository.save(Posts.builder()
